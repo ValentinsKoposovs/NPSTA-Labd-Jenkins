@@ -79,7 +79,7 @@ def build() {
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m venv venv"
     bat "venv/Scripts/activate"
-    bat "pip install -r requirements.txt"
+    bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m pip install -r requirements.txt"
     echo "Dependencies successfully installed"
 }
 
