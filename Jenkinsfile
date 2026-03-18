@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    environment {PATH = "C:/Users/37129/AppData/Local/Programs/Python/Python311/python.exe; $PATH"}
+    // environment {PATH = "C:/Users/37129/AppData/Local/Programs/Python/Python311/python.exe; $PATH"}
 
     stages {
         stage('install-pip-deps') {
@@ -77,7 +77,7 @@ pipeline {
 def build() {
     echo "Installing all necessary dependencies.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "python -m venv venv"
+    bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m venv venv"
     bat "venv/Scripts/activate"
     bat "pip install -r requirements.txt"
     echo "Dependencies successfully installed"
