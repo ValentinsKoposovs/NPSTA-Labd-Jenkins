@@ -1,11 +1,10 @@
 pipeline {
     agent any
 
-    triggers { pollSCM('*/1 * * * *') }
+    environment {PATH = "C:/Users/37129/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Python 3.11/python.exe; $PATH"}
 
     stages {
         stage('install-pip-deps') {
-            when {not {changeset "README.md"}}
             steps {
                 script {
                     build()
