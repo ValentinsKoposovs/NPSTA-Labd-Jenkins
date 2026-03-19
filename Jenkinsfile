@@ -1,8 +1,6 @@
 pipeline {
     agent any
 
-    environment {PATH = "C:/Users/37129/AppData/Local/Programs/Python/Python311/python.exe; $PATH"}
-
     stages {
         stage('install-pip-deps') {
             steps {
@@ -77,9 +75,10 @@ pipeline {
 def build() {
     echo "Installing all necessary dependencies.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m venv venv"
-    bat "venv/Scripts/activate"
-    bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m pip install -r requirements.txt"
+    bat "python -m venv venv"
+    bat "venv\Scripts\activate"
+    // bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m pip install -r requirements.txt"
+    bat "python -m pip install -r requirements.txt"
     echo "Dependencies successfully installed"
 }
 
@@ -88,7 +87,6 @@ def deploy(String environment, int port)
     echo "Deployment to ${environment} environment has started.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "node_modules\\.bin\\pm2 delete greetings-app-${environment} || exit 0"
-    bat "which ./venv/bin/python"
     bat "node_modules/.bin/pm2 start app.py --name greetings-app-${environment} --interpreter ./venv/bin/python -- --port ${port}"
     echo "Deployment to ${environment} environment has finished"
 }
