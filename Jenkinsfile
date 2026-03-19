@@ -76,7 +76,7 @@ def build() {
     echo "Installing all necessary dependencies.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "py -m venv venv"
-    bat "venv\\Scripts\\activate"
+    bat "venv/Scripts/activate"
     // bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m pip install -r requirements.txt"
     bat "py -m pip install -r requirements.txt"
     echo "Dependencies successfully installed"
