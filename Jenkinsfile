@@ -94,6 +94,7 @@ def test(String environment)
 {
     echo "Testing Sample Book Application service has started on ${environment} environment.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
+    bat "npm install"
     bat "npm run greetings greetings_${environment}"
     echo "Testing Sample Book Application service finished"
 }
