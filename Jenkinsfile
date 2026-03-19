@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    // environment {PATH = "C:/Users/37129/AppData/Local/Programs/Python/Python311/python.exe; $PATH"}
+    environment {PATH = "C:/Users/37129/AppData/Local/Programs/Python/Python311/python.exe; $PATH"}
 
     stages {
         stage('install-pip-deps') {
