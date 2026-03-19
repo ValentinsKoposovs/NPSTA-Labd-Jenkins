@@ -78,6 +78,8 @@ def build() {
     bat "python -m venv venv"
     bat "venv/Scripts/activate"
     bat "python -m pip install -r requirements.txt"
+    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
+    bat "npm install"
     echo "Dependencies successfully installed"
 }
 
