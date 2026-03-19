@@ -87,7 +87,6 @@ def deploy(String environment, int port)
 {
     echo "Deployment to ${environment} environment has started.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "npm install"
     bat "node_modules\\.bin\\pm2 delete greetings-app-${environment} || exit 0"
     bat "node_modules/.bin/pm2 start app.py --name greetings-app-${environment} --interpreter ./venv/bin/python -- --port ${port}"
     echo "Deployment to ${environment} environment has finished"
@@ -97,7 +96,6 @@ def test(String environment)
 {
     echo "Testing Sample Book Application service has started on ${environment} environment.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
-    bat "npm install"
     bat "npm run greetings greetings_${environment}"
     echo "Testing Sample Book Application service finished"
 }
