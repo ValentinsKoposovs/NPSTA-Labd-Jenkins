@@ -78,7 +78,7 @@ def build() {
     echo "Installing all necessary dependencies.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m venv venv"
-    bat "venv/Scripts/activate.bat"
+    bat "venv/Scripts/activate"
     bat "C:/Users/37129/AppData/Local/Programs/Python/Python311/python -m pip install -r requirements.txt"
     echo "Dependencies successfully installed"
 }
@@ -86,7 +86,7 @@ def build() {
 def deploy(String environment, int port)
 {
     echo "Deployment to ${environment} environment has started.."
-    git branch: 'main', poll: false, url: 'https://github.com/ValentinsKoposovs/sample-book-app-2026.git'
+    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
     bat "npm install"
     bat "node_modules\\.bin\\pm2 delete greetings-app-${environment} || exit 0"
     bat "node_modules/.bin/pm2 start app.py --name greetings-app-${environment} --interpreter ./venv/bin/python -- --port ${port}"
