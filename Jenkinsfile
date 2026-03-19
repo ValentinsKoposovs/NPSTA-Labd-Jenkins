@@ -78,8 +78,6 @@ def build() {
     bat "python -m venv venv"
     bat "venv/Scripts/activate"
     bat "python -m pip install -r requirements.txt"
-    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
-    bat "npm install"
     echo "Dependencies successfully installed"
 }
 
@@ -87,8 +85,8 @@ def deploy(String environment, int port)
 {
     echo "Deployment to ${environment} environment has started.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
-    bat "node_modules\\.bin\\pm2 delete greetings-app-${environment} || exit 0"
-    bat "node_modules/.bin/pm2 start app.py --name greetings-app-${environment} --interpreter python -- --port ${port}"
+    bat "pm2 delete greetings-app-${environment} || exit 0"
+    bat "pm2 start app.py --name greetings-app-${environment} --interpreter python -- --port ${port}"
     echo "Deployment to ${environment} environment has finished"
 }
 
