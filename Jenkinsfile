@@ -75,6 +75,7 @@ pipeline {
 def build() {
     echo "Installing all necessary dependencies.."
     git branch: 'main', poll: false, url: 'https://github.com/mtararujs/python-greetings.git'
+    bat "npm install"
     bat "python -m venv venv"
     bat "venv/Scripts/activate"
     bat "python -m pip install -r requirements.txt"
